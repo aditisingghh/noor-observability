@@ -15,7 +15,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - grafana-storage:/var/lib/grafana # ✅ persistence
+      - grafana-storage:/var/lib/grafana
 
   loki:
     image: grafana/loki:2.9.0
@@ -29,7 +29,7 @@ services:
     container_name: promtail
     volumes:
       - ./configs/promtail.yml:/etc/promtail/promtail.yml
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro # ✅ FIX
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
     command: -config.file=/etc/promtail/promtail.yml
 
   backend:
@@ -37,6 +37,16 @@ services:
     container_name: backend
     ports:
       - "4000:4000"
+
+  tempo:
+    image: grafana/tempo:2.3.0
+    container_name: tempo
+    ports:
+      - "3200:3200"
+      - "4318:4318"
+    command: [ "-config.file=/etc/tempo.yaml" ]
+    volumes:
+      - ./configs/tempo.yaml:/etc/tempo.yaml
 
 volumes:
   grafana-storage:
