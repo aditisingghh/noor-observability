@@ -15,3 +15,11 @@ scrape_configs:
         labels:
           job: docker
           __path__: /var/lib/docker/containers/*/*.log
+
+  - job_name: noor-app
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: noor-app
+          __path__: /var/log/noor/*.log

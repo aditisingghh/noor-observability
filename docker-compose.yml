@@ -30,6 +30,7 @@ services:
     volumes:
       - ./configs/promtail.yml:/etc/promtail/promtail.yml
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - C:/Users/aditi/Downloads/Internship_Projects/noor/logs:/var/log/noor
     command: -config.file=/etc/promtail/promtail.yml
 
   backend:
