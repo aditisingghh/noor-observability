@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: grafana
+    env: docker
+    plan: free
+    dockerImage: grafana/grafana
+
+  - type: web
+    name: prometheus
+    env: docker
+    plan: free
+    dockerImage: prom/prometheus
+
+  - type: web
+    name: loki
+    env: docker
+    plan: free
+    dockerImage: grafana/loki:2.9.0
+
+  - type: web
+    name: tempo
+    env: docker
+    plan: free
+    dockerImage: grafana/tempo:2.3.0
