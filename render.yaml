@@ -22,7 +22,8 @@ services:
 
   - type: web
     name: tempo
-    env: image
+    env: docker
     plan: free
-    image:
-      url: grafana/tempo:2.3.0
+    dockerfilePath: ./services/tempo/Dockerfile
+    dockerCommand: >
+      /tempo -config.file=/etc/tempo.yaml
