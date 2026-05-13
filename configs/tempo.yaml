@@ -1,3 +1,5 @@
+stream_over_http_enabled: true
+
 server:
   http_listen_port: 3200
 
@@ -8,17 +10,19 @@ distributor:
         http:
           endpoint: 0.0.0.0:3200
 
+ingester:
+  max_block_duration: 5m
+
+compactor:
+  compaction:
+    compacted_block_retention: 1h
+
 storage:
   trace:
     backend: local
     local:
-      path: /tmp/tempo
+      path: /tmp/tempo/traces
 
-compactor:
-  compaction:
-    block_retention: 24h
-
-metrics_generator:
-  registry:
-    external_labels:
-      source: tempo
+querier:
+  frontend_worker:
+    frontend_address: 127.0.0.1:9095
