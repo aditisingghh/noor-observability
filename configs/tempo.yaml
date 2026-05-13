@@ -20,12 +20,8 @@ compactor:
 
 storage:
   trace:
-    backend: "local"
+    backend: local
     wal:
-      path: "/tmp/tempo/wal"
+      path: /tmp/tempo/wal
     local:
-      path: "/tmp/tempo/traces"
-
-querier:
-  frontend_worker:
-    frontend_address: "127.0.0.1:9095"
+      path: /tmp/tempo/blocks
