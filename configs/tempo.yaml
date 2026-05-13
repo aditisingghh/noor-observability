@@ -24,7 +24,7 @@ storage:
     wal:
       path: "/tmp/tempo/wal"
     local:
-      path: "/tmp/tempo/blocks"
+      path: "/tmp/tempo/traces"
 
 querier:
   frontend_worker:

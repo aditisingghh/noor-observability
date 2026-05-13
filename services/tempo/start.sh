@@ -1,5 +1,7 @@
 #!/bin/sh
 
-/tempo -config.file=/etc/tempo.yaml &
+# Start Nginx in the background
+nginx &
 
-nginx -g "daemon off;"
+# Start Tempo with the explicitly defined configuration file path
+exec /tempo -config.file=/etc/tempo.yaml
