@@ -24,6 +24,4 @@ services:
     name: tempo
     env: docker
     plan: free
-    dockerfilePath: ./services/tempo/Dockerfile
-    dockerCommand: >
-      /tempo -config.file=/etc/tempo.yaml
+    dockerfilePath: ./services/tempo/Dockerfile
