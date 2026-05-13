@@ -13,4 +13,5 @@ RUN dos2unix /etc/tempo.yaml /etc/nginx/nginx.conf /start.sh && \
 
 EXPOSE 10000
 
+ENTRYPOINT []
 CMD ["/start.sh"]
