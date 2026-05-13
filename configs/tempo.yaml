@@ -6,7 +6,7 @@ distributor:
     otlp:
       protocols:
         http:
-        grpc:
+          endpoint: 0.0.0.0:3200
 
 storage:
   trace:
