@@ -24,4 +24,13 @@ services:
     name: tempo
     env: docker
     plan: free
-    dockerfilePath: ./services/tempo/Dockerfile
+    dockerfilePath: ./services/tempo/Dockerfile
+
+  - type: web
+    name: noor-backend
+    env: docker
+    plan: free
+    dockerfilePath: ./services/backend/Dockerfile
+    envVars:
+      - key: PORT
+        value: 4000
