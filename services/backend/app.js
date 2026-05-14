@@ -5,7 +5,7 @@ const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumenta
 
 const sdk = new NodeSDK({
     traceExporter: new OTLPTraceExporter({
-        url: "http://tempo:10000/v1/traces", // send to Tempo via Nginx proxy
+        url: "https://tempo-pzzd.onrender.com/v1/traces", // send to public Tempo URL
     }),
     serviceName: "noor-backend",
     instrumentations: [getNodeAutoInstrumentations()],

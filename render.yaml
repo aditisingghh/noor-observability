@@ -1,17 +1,15 @@
 services:
   - type: web
     name: grafana
-    env: image
+    env: docker
     plan: free
-    image:
-      url: grafana/grafana
+    dockerfilePath: ./services/grafana/Dockerfile
 
   - type: web
     name: prometheus
-    env: image
+    env: docker
     plan: free
-    image:
-      url: prom/prometheus
+    dockerfilePath: ./services/prometheus/Dockerfile
 
   - type: web
     name: loki
@@ -34,4 +32,4 @@ services:
     dockerContext: ./services/backend
     envVars:
       - key: PORT
-        value: 4000
+        value: 4000

@@ -4,8 +4,10 @@ global:
 scrape_configs:
   - job_name: "prometheus"
     static_configs:
-      - targets: ["prometheus:9090"]
+      - targets: ["localhost:9090"]
 
   - job_name: "node-app"
+    scheme: https
     static_configs:
-      - targets: ["noor-backend:4000"]
+      - targets: ["noor-backend-250j.onrender.com"]
+    metrics_path: /metrics
