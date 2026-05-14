@@ -1,6 +1,7 @@
 services:
   - type: web
     name: grafana
+<<<<<<< HEAD
     env: image
     plan: free
     image:
@@ -12,6 +13,17 @@ services:
     plan: free
     image:
       url: prom/prometheus
+=======
+    env: docker
+    plan: free
+    dockerfilePath: ./services/grafana/Dockerfile
+
+  - type: web
+    name: prometheus
+    env: docker
+    plan: free
+    dockerfilePath: ./services/prometheus/Dockerfile
+>>>>>>> main
 
   - type: web
     name: loki
@@ -24,4 +36,18 @@ services:
     name: tempo
     env: docker
     plan: free
-    dockerfilePath: ./services/tempo/Dockerfile
+<<<<<<< HEAD
+    dockerfilePath: ./services/tempo/Dockerfile
+=======
+    dockerfilePath: ./services/tempo/Dockerfile
+
+  - type: web
+    name: noor-backend
+    env: docker
+    plan: free
+    dockerfilePath: ./services/backend/Dockerfile
+    dockerContext: ./services/backend
+    envVars:
+      - key: PORT
+        value: 4000
+>>>>>>> main

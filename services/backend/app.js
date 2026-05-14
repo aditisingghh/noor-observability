@@ -5,7 +5,7 @@ const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumenta
 
 const sdk = new NodeSDK({
     traceExporter: new OTLPTraceExporter({
-        url: "http://tempo:4318/v1/traces", // send to Tempo
+        url: "https://tempo-pzzd.onrender.com/v1/traces", // send to public Tempo URL
     }),
     serviceName: "noor-backend",
     instrumentations: [getNodeAutoInstrumentations()],
@@ -48,6 +48,11 @@ app.use((req, res, next) => {
     next();
 });
 
+// home route
+app.get("/", (req, res) => {
+    res.send("<h1>🚀 NOOR Backend is Live</h1><p>Check <a href='/api'>/api</a> for data or <a href='/metrics'>/metrics</a> for Prometheus.</p>");
+});
+
 // test API
 app.get("/api", (req, res) => {
     console.log("API called 🚀");   // 🔥 THIS is what you'll search in Loki
@@ -60,6 +65,7 @@ app.get("/metrics", async (req, res) => {
     res.end(await client.register.metrics());
 });
 
-app.listen(4000, () => {
-    console.log("Server running on port 4000");
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
